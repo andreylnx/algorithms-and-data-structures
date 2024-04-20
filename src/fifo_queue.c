@@ -5,19 +5,19 @@
 
 typedef struct Node
 {
-    char * desc;
-    struct Node * next_node;
-} node_t;
+    int number;
+    struct Node *next_node;
+} t_node;
 
-node_t * head;
-node_t * tail;
+t_node *head = NULL;
+t_node *tail = NULL;
 
 int option;
 
-void enqueue(node_t * new_node);
+void enqueue(t_node *node);
 void dequeue();
-void show_queue(node_t * head);
-void blank_line(unsigned short int n_lines);
+void show_queue(t_node *node_aux);
+
 
 int main()
 {
@@ -36,14 +36,14 @@ int main()
             case 1:
                 printf("Enter the element: ");
 
-                char element_desc[100];
-                scanf("%s", element_desc);
+                int number_aux;
+                scanf("%d", &number_aux);
 
-                node_t new_node;
-                new_node.desc = element_desc;
-                new_node.next_node = NULL;
+                t_node *new_node = (t_node *) malloc(sizeof(t_node));
+                new_node->number = number_aux;
+                new_node->next_node = NULL;
 
-                enqueue(&new_node);
+                enqueue(new_node);
                 break;
 
             case 2:
@@ -52,7 +52,6 @@ int main()
 
             case 3:
                 show_queue(head);
-                blank_line(1);
                 break;
 
             case EXIT_OPT:
@@ -66,40 +65,45 @@ int main()
 
 }
 
-void enqueue(node_t * new_node)
+void enqueue(t_node *node)
 {
-    if (head == NULL && tail == NULL)
+    if (head == NULL)
     {
-        head = new_node;
-        tail = new_node;
+        head = node;
+        tail = node;
     }
-    else
+    else if (head != NULL && tail != node)
     {
-        ( * tail).next_node = new_node;
-        tail = new_node;
+        tail->next_node = node;
+        tail = node;
     }
 }
 
 void dequeue()
 {
+    if (head != NULL)
+    {
+        t_node *node_to_remove = head;
+        head = node_to_remove->next_node;
+        free(node_to_remove);
+    }
+}
+
+void show_queue(t_node *head_node)
+{
+    if (head == NULL)
+    {
+        puts("*** There are no items in the queue.");
+        return;
+    }
+    else
+    {
+        printf("Node: %d\n", head_node->number);
     
-}
-
-void show_queue(node_t * head_node)
-{
-    node_t *current_node = head_node;
-
-    while (current_node != NULL)
-    {
-        printf("%s", (*current_node).desc);
-        current_node = (*current_node).next_node;
+        if (head_node->next_node != NULL)
+        {
+            show_queue(head_node->next_node);
+        }
     }
-}
 
-void blank_line(unsigned short int n_lines)
-{
-    for (int i = 0; i < n_lines; i++)
-    {
-        printf("\n");
-    }
 }
