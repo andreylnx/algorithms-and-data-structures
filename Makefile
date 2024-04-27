@@ -2,11 +2,11 @@ COMPILER = gcc
 BIN := ./bin
 SRC := ./src
 
-all:	$(BIN)/fifo_queue $(BIN)/simple_fibonacci_generator $(BIN)/recursive_fibonacci_generator  $(BIN)/factorial $(BIN)/stack
+all:	$(BIN)/queue $(BIN)/simple_fibonacci_generator $(BIN)/recursive_fibonacci_generator  $(BIN)/factorial $(BIN)/stack
 	@echo "" 
 	@echo "Compiling all..."
 	
-$(BIN)/fifo_queue: $(SRC)/fifo_queue.c
+$(BIN)/queue: $(SRC)/queue.c
 	@echo "" 
 	@echo "Compiling FIFO queue source files..."
 	$(COMPILER) -g $< -o $@
