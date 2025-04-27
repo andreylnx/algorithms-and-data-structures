@@ -2,7 +2,7 @@ COMPILER = gcc
 BIN := ./bin
 SRC := ./src
 
-all:	$(BIN)/queue $(BIN)/simple_fibonacci_generator $(BIN)/recursive_fibonacci_generator  $(BIN)/factorial $(BIN)/stack
+all:	$(BIN)/queue $(BIN)/simple_fibonacci_generator $(BIN)/recursive_fibonacci_generator  $(BIN)/factorial $(BIN)/stack $(BIN)/binary_search
 	@echo "" 
 	@echo "Compiling all..."
 	
@@ -30,6 +30,11 @@ $(BIN)/factorial: $(SRC)/factorial.c
 	@echo "" 
 	@echo "Compiling factorial source file..."
 	$(COMPILER) -g $< -o $@
+	
+$(BIN)/binary_search: $(SRC)/binary_search.c
+	@echo ""
+	@echo "Compiling factorial source file..."
+	$(COMPILER) -g $< -o $@
 
 clean:
 	rm -f factorial
@@ -38,4 +43,5 @@ clean:
 	rm -f recursive_fibonacci_generator
 	rm -f simple_fibonacci_generator
 	rm -rf bin/*
+
 

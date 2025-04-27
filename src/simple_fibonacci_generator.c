@@ -1,10 +1,3 @@
-/*
- * FIBONACCI ALGORITHM - SIMPLE GENERATOR
- * DATE: December 3, 2023.
- * Author: Andrey A. Oliveira
- *
- */
-
 #include <stdlib.h>
 #include <stdio.h>
 

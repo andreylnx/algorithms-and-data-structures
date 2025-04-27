@@ -1,8 +1,3 @@
-/* (FIFO) STACK
- * Author: andreylnx (Andrey A. de Oliveira)
- * Date: April 22, 2024.
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 

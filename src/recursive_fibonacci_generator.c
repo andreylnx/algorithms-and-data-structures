@@ -1,10 +1,3 @@
-/*
- * FIBONACCI ALGORITHM - RECURSIVE GENERATOR
- * DATE: December 4, 2023.
- * Author: Andrey A. de Oliveira
- * 
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 
